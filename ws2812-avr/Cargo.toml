@@ -1,0 +1,21 @@
+[package]
+name = "ws2812-avr"
+version = "0.1.0"
+authors = ["Roberto Guillén"]
+edition = "2021"
+license = "GPL-3.0-only"
+
+[features]
+atmega32u4 = []
+atmega48p = []
+atmega168 = []
+atmega328p = []
+atmega328pb = []
+atmega1280 = []
+atmega2560 = []
+attiny85 = []
+attiny88 = []
+
+[dependencies]
+avr-hal-generic = {git = "https://github.com/rahix/avr-hal", rev = "1aacefb335517f85d0de858231e11055d9768cdf"}
+arduino-hal = {git = "https://github.com/rahix/avr-hal", rev = "1aacefb335517f85d0de858231e11055d9768cdf"}

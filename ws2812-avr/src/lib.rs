@@ -22,7 +22,6 @@ along with ws2812-avr. If not, see <https://www.gnu.org/licenses/>.
 #![feature(generic_const_exprs)]
 #![feature(never_type)]
 #![feature(const_mut_refs)]
-#![feature(specialization)]
 #![feature(adt_const_params)]
 #![feature(const_trait_impl)]
 #![feature(const_slice_index)]
@@ -38,7 +37,7 @@ use core::marker::PhantomData;
 use core::mem::size_of;
 use ports::{StaticPin, StaticPort};
 use util::time::TimeVal;
-use util::{time, IntoNopPeano, NopGen, Num};
+use util::{time, NopBlock, NopGen};
 
 mod consts {
     use arduino_hal::{clock::Clock, DefaultClock};
@@ -220,13 +219,13 @@ impl<Ts: Timings> CalculatedTimings for Ts {
 
 impl<Ts: Timings> TypedTimings for Ts
 where
-    Num<{ Ts::S1_NOPS }>: IntoNopPeano,
-    Num<{ Ts::S2_NOPS }>: IntoNopPeano,
-    Num<{ Ts::S3_NOPS }>: IntoNopPeano,
+    NopBlock<{ Ts::S1_NOPS }>: NopGen,
+    NopBlock<{ Ts::S2_NOPS }>: NopGen,
+    NopBlock<{ Ts::S3_NOPS }>: NopGen,
 {
-    type S1Nops = <Num<{ Ts::S1_NOPS }> as IntoNopPeano>::Peano;
-    type S2Nops = <Num<{ Ts::S2_NOPS }> as IntoNopPeano>::Peano;
-    type S3Nops = <Num<{ Ts::S3_NOPS }> as IntoNopPeano>::Peano;
+    type S1Nops = NopBlock<{ Ts::S1_NOPS }>;
+    type S2Nops = NopBlock<{ Ts::S2_NOPS }>;
+    type S3Nops = NopBlock<{ Ts::S3_NOPS }>;
 }
 
 /**

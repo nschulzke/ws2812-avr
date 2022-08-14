@@ -5,11 +5,11 @@ Rust.
 
 This project was done for fun as a part of a Rust learning process. It
 uses extremely unstable features from the nigthly compiler, such as
-`const_generic_exprs`, or `specialization` because it is more
-entertaining and useful for me to using them than not doing so. This
-library may be used as long as you keep that in mind.
+`const_generic_exprs` because it is more entertaining and useful for
+me to using them than not doing so. This library may be used as long
+as you keep that in mind.
 
-Tested on Rust nightly 2022-07-03.
+Tested on Rust nightly 2022-08-12 (Minimum version required).
 
 ## Usage
 

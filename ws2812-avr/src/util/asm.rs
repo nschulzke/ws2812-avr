@@ -40,7 +40,7 @@ macro_rules! skip_if_bit_set {
 
 macro_rules! ld_immediate {
     ($reg:ident, $value:literal) => {
-	core::arch::asm!(concat!("ldi {reg}, ", $value), reg = out(reg) $reg);
+	core::arch::asm!(concat!("ldi {reg}, ", $value), reg = out(reg_upper) $reg);
     };
 }
 

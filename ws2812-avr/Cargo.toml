@@ -15,6 +15,7 @@ atmega1280 = []
 atmega2560 = []
 attiny85 = []
 attiny88 = []
+arduino-uno = []
 
 [dependencies]
 avr-hal-generic = {git = "https://github.com/rahix/avr-hal", rev = "1aacefb335517f85d0de858231e11055d9768cdf"}
